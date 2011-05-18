@@ -166,6 +166,9 @@ case $OSTYPE in
 freebsd*)
 	alias ls="ls -G"
 ;;
+darwin*)
+	alias ls="ls -G"
+;;
 linux*)
 	alias ls="ls --color=auto"
 ;;
