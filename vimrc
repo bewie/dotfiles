@@ -1,4 +1,7 @@
 " ---------------------------------------------------------------------------
+" Fichier .vimrc pour vim
+" (C) Laurent (laurent@bewie.org)
+"
 " General
 " ---------------------------------------------------------------------------
 
@@ -66,17 +69,19 @@ set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA " shorten messages
 set report=0 " tell us about changes
 set nostartofline " don't jump to the start of line when scrolling
+set title
 
 " ----------------------------------------------------------------------------
 " Visual Cues
 " ----------------------------------------------------------------------------
 
 set showmatch " brackets/braces that is
+set showmode  " Show current mode
 set mat=5 " duration to show matching brace (1/10 sec)
 set incsearch " do incremental searching
 set laststatus=2 " always show the status line
 set ignorecase " ignore case when searching
-set nohlsearch " don't highlight searches
+set hlsearch " highlight searches
 set visualbell " shut the fuck up
 
 " ----------------------------------------------------------------------------
@@ -90,10 +95,16 @@ set softtabstop=2 " yep, two
 set shiftwidth=2 " ..
 set tabstop=4
 set expandtab " expand tabs to spaces
-set nosmarttab " fuck tabs
+set smarttab "
 set formatoptions+=n " support for numbered/bullet lists
-set textwidth=80 " wrap at 80 chars by default
 set virtualedit=block " allow virtual edit in visual block ..
+
+" ---------------------------------------------------------------------------
+" ENCODING SETTINGS
+" ---------------------------------------------------------------------------
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
 
 " ----------------------------------------------------------------------------
 " Mappings
