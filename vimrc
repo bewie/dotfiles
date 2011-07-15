@@ -38,7 +38,7 @@ highlight StatusLine ctermbg=Black ctermfg=LightGrey
 " Highlight Trailing Whitespace
 " ----------------------------------------------------------------------------
 
-set list listchars=trail:.,tab:>.
+"set list listchars=trail:.,tab:>.
 highlight SpecialKey ctermfg=DarkGray ctermbg=Black
 
 " ----------------------------------------------------------------------------
@@ -65,7 +65,7 @@ set wildmenu " turn on wild menu
 set wildmode=list:longest,full
 set ch=2 " command line height
 set backspace=2 " allow backspacing over everything in insert mode
-set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
+"set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA " shorten messages
 set report=0 " tell us about changes
 set nostartofline " don't jump to the start of line when scrolling
