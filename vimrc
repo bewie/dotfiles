@@ -238,4 +238,8 @@ let $MANPAGER = '/usr/bin/less -is'
 command -nargs=* Xe !chmod +x <args>
 command! -nargs=0 Xe !chmod +x %
 
-
+" --------------------------------------------------------------------------
+" Pathogen load
+" --------------------------------------------------------------------------
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
