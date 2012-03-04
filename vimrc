@@ -144,6 +144,9 @@ inoremap <Up> <C-o>gk
 cnoremap <Left> <Space><BS><Left>
 cnoremap <Right> <Space><BS><Right>
 
+" nerdtree mapping
+map <F8> <Esc>:NERDTreeToggle<CR>
+
 " ----------------------------------------------------------------------------
 " Auto Commands
 " ----------------------------------------------------------------------------
