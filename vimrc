@@ -9,12 +9,18 @@ set nocompatible " essential
 set history=1000 " lots of command line history
 set cf " error files / jumping
 set ffs=unix,dos,mac " support these files
+filetype on
 filetype plugin indent on " load filetype plugin
 set isk+=_,$,@,%,#,- " none word dividers
 set viminfo='1000,f1,:100,@100,/20
 set modeline " make sure modeline support is enabled
 set autoread " reload files (no local changes only)
 set tabpagemax=50 " open 50 tabs max
+
+" Fugitive config
+set laststatus=2
+set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
+
 
 " ---------------------------------------------------------------------------
 " Colors / Theme
@@ -33,6 +39,7 @@ endif
 highlight Comment ctermfg=DarkGrey guifg=#444444
 highlight StatusLineNC ctermfg=Black ctermbg=DarkGrey cterm=bold
 highlight StatusLine ctermbg=Black ctermfg=LightGrey
+highlight LineNr ctermfg=Blue ctermbg=Black
 
 " ----------------------------------------------------------------------------
 " Highlight Trailing Whitespace
@@ -91,13 +98,14 @@ set visualbell " shut the fuck up
 set autoindent " automatic indent new lines
 "set smartindent " be smart about it
 "set nowrap " do not wrap lines
-set softtabstop=2 " yep, two
-set shiftwidth=2 " ..
-"set tabstop=4
+set shiftwidth=4 " ..
+set softtabstop=4 " yep, two
+set tabstop=8
 set expandtab " expand tabs to spaces
 set smarttab "
 set formatoptions+=n " support for numbered/bullet lists
 set virtualedit=block " allow virtual edit in visual block ..
+set textwidth=80 
 
 " ---------------------------------------------------------------------------
 " ENCODING SETTINGS
@@ -146,6 +154,8 @@ cnoremap <Right> <Space><BS><Right>
 
 " nerdtree mapping
 map <F8> <Esc>:NERDTreeToggle<CR>
+" gundo mapping
+map <C-u> <Esc>:GundoToggle<CR>
 
 " ----------------------------------------------------------------------------
 " Auto Commands
