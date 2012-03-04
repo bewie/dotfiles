@@ -112,6 +112,7 @@ typeset -g -A key
 bindkey '^I' complete-word # complete on tab, leave expansion to _expand
 #WORDCHARS=${WORDCHARS//[&=\/;!#%{]}
 #WORDCHARS=${WORDCHARS//[&=\  ;!#%{]}
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 #bindkey -v
 bindkey -e
 bindkey '^?' backward-delete-char
@@ -166,9 +167,6 @@ case $OSTYPE in
 freebsd*)
 	alias ls="ls -G"
 ;;
-darwin*)
-	alias ls="ls -G"
-;;
 linux*)
 	alias ls="ls --color=auto"
 ;;
@@ -211,8 +209,8 @@ a r-x='chmod 755'
 
 alias grep="grep --color=auto"
 alias vkern="printf 'GET /kdist/finger_banner HTTP1.0\n\n' | nc www.kernel.org 80 | grep latest"
-alias irc="irssi --nick=laurent --password=xxxxxx --connect=xxxxxx --port=6667"
 alias freenode="irssi --nick=bewie --connect=irc.freenode.net"
+alias iguaneirc="irssi --nick=lolo --connect=irc.dedibox.fr"
 
 #config boulo
 alias dell_dock="xrandr --output DVI1 --mode 1280x1024 --rate 75 --pos 0x0 --rotate normal --output DVI2 --mode 1280x1024 --rate 75 --pos 1280x0 --rotate normal --output LVDS1 --off"
@@ -240,7 +238,9 @@ _src_etc_profile_d
 zmodload zsh/complist
 autoload -U zcalc
 
-
+if [[ "$TERM" == "xterm" ]]; then # We're not a login shell
+  export TERM=xterm-256color
+fi
 #----------------{ Zen (cpan for zsh :) )
 fpath=(
         $fpath
@@ -259,8 +259,12 @@ promptinit
 #prompt redhat
 #PROMPT='%B%F{red}%m%k %B%F{blue}%1~ %# %b%f%k'
 #PROMPT='%B%F{green}%n@%m%k %B%F{blue}%1~ %# %b%f%k'
-PROMPT='%(?..[%F{red}%?%b%f%k])%F{blue}%n%F{green}@%m%k %B%F{blue}%1~> %b%f%k'
-
+if [[ "$EUID" = "0" ]] || [[ "$USER" = 'root' ]]
+  then
+    PROMPT='%(?..[%F{red}%?%b%f%k])%F{red}%n%F{green}@%m%k %B%F{blue}%1~> %b%f%k'
+  else
+    PROMPT='%(?..[%F{red}%?%b%f%k])%F{blue}%n%F{green}@%m%k %B%F{blue}%1~> %b%f%k'
+  fi
 
 #----------------{ hash
 print -n " hash"
