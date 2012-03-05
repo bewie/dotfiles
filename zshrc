@@ -164,6 +164,9 @@ autoload run-help # ESC-h, ESC-H, ALT-h ou ALT-H lance le man sur la commande en
 print -n " alias"
 
 case $OSTYPE in 
+darwin*)
+	alias ls="ls -G"
+;;
 freebsd*)
 	alias ls="ls -G"
 ;;
