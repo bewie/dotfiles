@@ -103,9 +103,9 @@ set softtabstop=4 " yep, two
 set tabstop=8
 set expandtab " expand tabs to spaces
 set smarttab "
-set formatoptions+=n " support for numbered/bullet lists
 set virtualedit=block " allow virtual edit in visual block ..
-set textwidth=80 
+"set formatoptions+=n " support for numbered/bullet lists
+"set textwidth=80 
 
 " ---------------------------------------------------------------------------
 " ENCODING SETTINGS
