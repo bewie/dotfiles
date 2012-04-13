@@ -220,6 +220,8 @@ alias dell_dock="xrandr --output DVI1 --mode 1280x1024 --rate 75 --pos 0x0 --rot
 #alias dell_dock="xrandr --output DVI1 --mode 1280x1024 --pos 0x0 --rotate normal --output DVI2 --mode 1280x1024 --pos 1280x0 --rotate normal --output LVDS1 --off"
 alias laptop="xrandr --output DVI1 --off --output DVI2 --off --output LVDS1 --mode 1440x900 --pos 0x0 --rotate normal"
 
+alias todo="/Users/laurent/git/todo.txt-cli/todo.sh"
+
 _src_etc_profile_d()
 {
     #  Make the *.sh things happier, and have possible ~/.zshenv options like
