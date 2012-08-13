@@ -13,6 +13,7 @@ RCLOADED=1
 HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=1000000
+export PATH="$HOME/bin:$PATH"
 unsetopt cshjunkiequotes                 # On est sous ZSH merde,c'est bapt qui l'dit alors j'lecoute !
 export EDITOR=/usr/bin/vi		 # vi off course!
 setopt ALL_EXPORT                        # Exporte tout
