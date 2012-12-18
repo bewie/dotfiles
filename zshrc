@@ -139,7 +139,7 @@ bindkey '^[[1;3C' forward-word     # alt + RIGHT
 bindkey '_^?' backward-delete-word # alt + BACKSPACE  delete word backward
 bindkey '^[[3;3~' delete-word      # alt + DELETE  delete word forward
 bindkey '^[' self-insert           # alt + ENTER  allow multiline input
-bindkey '_t' transpose-words
+#bindkey '_t' transpose-words
 
 bindkey '^[[F' end-of-line
 bindkey '^[[H' beginning-of-line
