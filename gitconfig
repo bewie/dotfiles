@@ -16,6 +16,7 @@ pager = less -R
 auto = 0 
 
 [alias] 
+poule = "!f() { echo 'cot cot'; }; f"
 ci = commit 
 st = status 
 br = branch 
