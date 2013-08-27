@@ -17,6 +17,7 @@ auto = 0
 
 [alias] 
 poule = "!f() { echo 'cot cot'; }; f"
+alias = config --get-regexp alias
 ci = commit 
 st = status 
 br = branch 
