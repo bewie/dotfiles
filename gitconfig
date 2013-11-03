@@ -1,5 +1,5 @@
 [user]
-	name = bewie
+	name = laurent
 	email = laurent@bewie.org
 [color] 
 diff = auto 
@@ -67,3 +67,5 @@ heads = !"git log origin/master.. --format='%Cred%h%Creset;%C(yellow)%an%Creset;
 #trustExitCode = true
 [rerere]
 	enabled = 1
+[push]
+	default = simple
