@@ -13,6 +13,7 @@ RCLOADED=1
 HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=1000000
+export PATH="$HOME/bin:/usr/local/sbin:$PATH"
 unsetopt cshjunkiequotes                 # On est sous ZSH merde,c'est bapt qui l'dit alors j'lecoute !
 export EDITOR=/usr/bin/vi		 # vi off course!
 setopt ALL_EXPORT                        # Exporte tout
@@ -138,7 +139,7 @@ bindkey '^[[1;3C' forward-word     # alt + RIGHT
 bindkey '_^?' backward-delete-word # alt + BACKSPACE  delete word backward
 bindkey '^[[3;3~' delete-word      # alt + DELETE  delete word forward
 bindkey '^[' self-insert           # alt + ENTER  allow multiline input
-bindkey '_t' transpose-words
+#bindkey '_t' transpose-words
 
 bindkey '^[[F' end-of-line
 bindkey '^[[H' beginning-of-line
@@ -219,6 +220,8 @@ alias iguaneirc="irssi --nick=lolo --connect=irc.dedibox.fr"
 alias dell_dock="xrandr --output DVI1 --mode 1280x1024 --rate 75 --pos 0x0 --rotate normal --output DVI2 --mode 1280x1024 --rate 75 --pos 1280x0 --rotate normal --output LVDS1 --off"
 #alias dell_dock="xrandr --output DVI1 --mode 1280x1024 --pos 0x0 --rotate normal --output DVI2 --mode 1280x1024 --pos 1280x0 --rotate normal --output LVDS1 --off"
 alias laptop="xrandr --output DVI1 --off --output DVI2 --off --output LVDS1 --mode 1440x900 --pos 0x0 --rotate normal"
+
+alias todo="/Users/laurent/git/todo.txt-cli/todo.sh"
 
 _src_etc_profile_d()
 {

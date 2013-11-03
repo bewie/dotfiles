@@ -77,6 +77,7 @@ set shortmess=filtIoOA " shorten messages
 set report=0 " tell us about changes
 set nostartofline " don't jump to the start of line when scrolling
 set title
+set cursorline
 
 " ----------------------------------------------------------------------------
 " Visual Cues
@@ -103,9 +104,9 @@ set softtabstop=4 " yep, two
 set tabstop=8
 set expandtab " expand tabs to spaces
 set smarttab "
-set formatoptions+=n " support for numbered/bullet lists
 set virtualedit=block " allow virtual edit in visual block ..
-set textwidth=80 
+"set formatoptions+=n " support for numbered/bullet lists
+"set textwidth=80 
 
 " ---------------------------------------------------------------------------
 " ENCODING SETTINGS
@@ -152,8 +153,6 @@ inoremap <Up> <C-o>gk
 cnoremap <Left> <Space><BS><Left>
 cnoremap <Right> <Space><BS><Right>
 
-" nerdtree mapping
-map <F8> <Esc>:NERDTreeToggle<CR>
 " gundo mapping
 map <C-u> <Esc>:GundoToggle<CR>
 " Tasklist
@@ -257,4 +256,5 @@ command! -nargs=0 Xe !chmod +x %
 " Pathogen load
 " --------------------------------------------------------------------------
 call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
