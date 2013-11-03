@@ -156,6 +156,8 @@ cnoremap <Right> <Space><BS><Right>
 map <F8> <Esc>:NERDTreeToggle<CR>
 " gundo mapping
 map <C-u> <Esc>:GundoToggle<CR>
+" Tasklist
+map <C-T> <Plug>TaskList
 
 " ----------------------------------------------------------------------------
 " Auto Commands
