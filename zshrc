@@ -256,12 +256,26 @@ autoload -U zen
 
 #----------------{ prompt
 print -n " prompt"
-# Set prompts
-autoload -U promptinit
-autoload -Uz vcs_info && vcs_info
-zstyle ':vcs_info:*:prompt:*' check-for-changes true
 
-promptinit
+function powerline_precmd() {
+  export PS1="$(~/powerline-shell.py $? --shell zsh 2> /dev/null)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+# Set prompts
+#autoload -U promptinit
+#autoload -Uz vcs_info && vcs_info
+#zstyle ':vcs_info:*:prompt:*' check-for-changes true
+
+#promptinit
 #prompt redhat
 #PROMPT='%B%F{red}%m%k %B%F{blue}%1~ %# %b%f%k'
 #PROMPT='%B%F{green}%n@%m%k %B%F{blue}%1~ %# %b%f%k'
@@ -269,7 +283,12 @@ if [[ "$EUID" = "0" ]] || [[ "$USER" = 'root' ]]
   then
     PROMPT='%(?..[%F{red}%?%b%f%k])%F{red}%n%F{green}@%m%k %B%F{blue}%1~> %b%f%k'
   else
-    PROMPT='%(?..[%F{red}%?%b%f%k])%F{blue}%n%F{green}@%m%k %B%F{blue}%1~> %b%f%k'
+    if [[ -x ~/powerline-shell.py ]]
+      then
+        install_powerline_precmd
+      else
+        PROMPT='%(?..[%F{red}%?%b%f%k])%F{blue}%n%F{green}@%m%k %B%F{blue}%1~> %b%f%k'
+    fi
   fi
 
 #----------------{ hash
@@ -287,3 +306,6 @@ esac
 
 print -n " ]"
 print
+
+
+
