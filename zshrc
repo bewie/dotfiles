@@ -3,7 +3,7 @@
 ##
 
 
-[[ -z $OSTYPE ]] && OSTYPE=`uname`       
+[[ -z $OSTYPE ]] && OSTYPE=`uname`
 [[ -z $HOSTTYPE ]] && HOSTTYPE=$MACHTYPE
 
 print -n "[ Loading : rc"
@@ -27,6 +27,19 @@ setopt HIST_NO_STORE                     # N'enregistre pas la cmd history
 setopt appendhistory extendedglob nomatch notify
 setopt hist_ignore_all_dups
 #---- }
+
+#----------------{ oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git atom rake tmux cp)
+
+source $ZSH/oh-my-zsh.sh
+
+
 autoload -U zfinit
 zfinit
 autoload -U zmv  # load the ZSH super mv ;)
@@ -125,7 +138,7 @@ bindkey '^[[6~' down-line-or-history
 bindkey '^[[A' up-line-or-search
 bindkey '^[[D' backward-char
 bindkey '^[[B' down-line-or-search
-bindkey '^[[C' forward-char 
+bindkey '^[[C' forward-char
 #
 # Useful piping shortcuts
 #bindkey -s '^|l' "|less\n"                   # c-| l  pipe to less
@@ -164,7 +177,7 @@ autoload run-help # ESC-h, ESC-H, ALT-h ou ALT-H lance le man sur la commande en
 #
 print -n " alias"
 
-case $OSTYPE in 
+case $OSTYPE in
 darwin*)
 	alias ls="ls -G"
 ;;
@@ -180,7 +193,7 @@ alias a="alias"
 a rm='rm -f'
 a xterm="xterm $XTERM_OPTS"
 a l='ls -l'
-a ll='ls -al' 
+a ll='ls -al'
 # List only directories and symbolic
 # links that point to directories
 a lsd='ls -ld *(-/DN)'
@@ -210,6 +223,10 @@ a rw-='chmod 600'
 a rwx='chmod 700'
 a r--='chmod 644'
 a r-x='chmod 755'
+
+alias zshconfig="atom ~/.zshrc"
+alias ohmyzsh="atom ~/.oh-my-zsh"
+
 
 alias grep="grep --color=auto"
 alias vkern="printf 'GET /kdist/finger_banner HTTP1.0\n\n' | nc www.kernel.org 80 | grep latest"
@@ -293,7 +310,7 @@ if [[ "$EUID" = "0" ]] || [[ "$USER" = 'root' ]]
 
 #----------------{ hash
 print -n " hash"
-case $OSTYPE in 
+case $OSTYPE in
 freebsd*)
         hash -d ports=/usr/ports
         hash -d src=/usr/src
@@ -306,6 +323,3 @@ esac
 
 print -n " ]"
 print
-
-
-
