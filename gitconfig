@@ -43,7 +43,9 @@ commiter = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)[%an]%Creset %s
 log1 = log --pretty=oneline --abbrev-commit --decorate 
 rev = merge --no-ff --no-commit
 undo = git reset --soft HEAD^ # Le flag --soft va conserver les modifications dans le répertoire de travail. 
-last = log -1 HEAD rz = reset --hard HEAD # 
+last = log -1 HEAD 
+
+rz = reset --hard HEAD # 
 #grm = !git status | grep deleted | awk '{print \$3}' | xargs git rm # for LINUX only : auto rm all deleted 
 where = "!git branch | grep \"^\\*\" | cut -d \" \" -f 2" # affiche la branch courante 
 spull = !git svn rebase && git status sspull = !git stash && git svn rebase && git stash apply 
