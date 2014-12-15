@@ -73,7 +73,23 @@ heads = !"git log origin/master.. --format='%Cred%h%Creset;%C(yellow)%an%Creset;
 #[mergetool "sourcetree"]
 #cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\" 
 #trustExitCode = true
+
+[diff]
+    mnemonicPrefix = true
+    renames = true
+    wordRegex = . 
+
+[fetch]
+    recurseSubmodules = on-demand
+
+[grep]
+    extendedRegexp = true 
+
+[status]
+    submoduleSummary = true
+    showUntrackedFiles = all 
+
 [rerere]
-	enabled = 1
+    enabled = 1
 [push]
-	default = simple
+    default = upstream
