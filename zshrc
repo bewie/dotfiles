@@ -239,6 +239,7 @@ alias dell_dock="xrandr --output DVI1 --mode 1280x1024 --rate 75 --pos 0x0 --rot
 alias laptop="xrandr --output DVI1 --off --output DVI2 --off --output LVDS1 --mode 1440x900 --pos 0x0 --rotate normal"
 
 alias todo="/Users/laurent/git/todo.txt-cli/todo.sh"
+alias puppet-lint="puppet-lint --no-80chars-check --no-documentation-check --no-variable_scope-check"
 
 _src_etc_profile_d()
 {
