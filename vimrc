@@ -101,7 +101,7 @@ set autoindent " automatic indent new lines
 "set nowrap " do not wrap lines
 set shiftwidth=4 " ..
 set softtabstop=4 " yep, two
-set tabstop=8
+set tabstop=2
 set expandtab " expand tabs to spaces
 set smarttab "
 set virtualedit=block " allow virtual edit in visual block ..
