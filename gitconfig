@@ -93,3 +93,7 @@ heads = !"git log origin/master.. --format='%Cred%h%Creset;%C(yellow)%an%Creset;
     enabled = 1
 [push]
     default = upstream
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true

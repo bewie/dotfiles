@@ -39,6 +39,13 @@ plugins=(git atom rake tmux cp)
 
 source $ZSH/oh-my-zsh.sh
 
+#https://github.com/arialdomartini/oh-my-git
+#source "$HOME/.antigen/antigen.zsh"
+
+#antigen-use oh-my-zsh
+#antigen-bundle arialdomartini/oh-my-git
+#antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
+#antigen-apply
 
 autoload -U zfinit
 zfinit
@@ -237,9 +244,9 @@ alias iguaneirc="irssi --nick=lolo --connect=irc.dedibox.fr"
 alias dell_dock="xrandr --output DVI1 --mode 1280x1024 --rate 75 --pos 0x0 --rotate normal --output DVI2 --mode 1280x1024 --rate 75 --pos 1280x0 --rotate normal --output LVDS1 --off"
 #alias dell_dock="xrandr --output DVI1 --mode 1280x1024 --pos 0x0 --rotate normal --output DVI2 --mode 1280x1024 --pos 1280x0 --rotate normal --output LVDS1 --off"
 alias laptop="xrandr --output DVI1 --off --output DVI2 --off --output LVDS1 --mode 1440x900 --pos 0x0 --rotate normal"
-
+alias fireig1='/Applications/Firefox.app/Contents/MacOS/firefox-bin -P IG1 -no-remote'
 alias todo="/Users/laurent/git/todo.txt-cli/todo.sh"
-alias puppet-lint="puppet-lint --no-80chars-check --no-documentation-check --no-variable_scope-check"
+alias puppet-lint="puppet-lint --no-80chars-check --no-documentation-check --no-autoloader_layout-check --no-nested_classes_or_defines-check --no-class_inherits_from_params_class-check"
 
 _src_etc_profile_d()
 {
