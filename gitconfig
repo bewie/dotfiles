@@ -10,6 +10,7 @@ ui = auto
  
 [core] 
 pager = less -R 
+editor = /usr/local/bin/vim
 #excludesfile = /home/laurent/.gitignore 
 
 [gc] 
