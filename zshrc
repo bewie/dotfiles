@@ -39,13 +39,11 @@ plugins=(git atom rake tmux cp)
 
 source $ZSH/oh-my-zsh.sh
 
+#----------------{ antigen
 #https://github.com/arialdomartini/oh-my-git
-#source "$HOME/.antigen/antigen.zsh"
-
-#antigen-use oh-my-zsh
-#antigen-bundle arialdomartini/oh-my-git
-#antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
-#antigen-apply
+source "$HOME/.antigen/antigen.zsh"
+antigen-use oh-my-zsh
+antigen-bundle arialdomartini/oh-my-git
 
 autoload -U zfinit
 zfinit
@@ -230,6 +228,7 @@ a rw-='chmod 600'
 a rwx='chmod 700'
 a r--='chmod 644'
 a r-x='chmod 755'
+a fuck='sudo $(fc -ln -1)'
 
 alias zshconfig="atom ~/.zshrc"
 alias ohmyzsh="atom ~/.oh-my-zsh"
@@ -244,9 +243,11 @@ alias iguaneirc="irssi --nick=lolo --connect=irc.dedibox.fr"
 alias dell_dock="xrandr --output DVI1 --mode 1280x1024 --rate 75 --pos 0x0 --rotate normal --output DVI2 --mode 1280x1024 --rate 75 --pos 1280x0 --rotate normal --output LVDS1 --off"
 #alias dell_dock="xrandr --output DVI1 --mode 1280x1024 --pos 0x0 --rotate normal --output DVI2 --mode 1280x1024 --pos 1280x0 --rotate normal --output LVDS1 --off"
 alias laptop="xrandr --output DVI1 --off --output DVI2 --off --output LVDS1 --mode 1440x900 --pos 0x0 --rotate normal"
-alias fireig1='/Applications/Firefox.app/Contents/MacOS/firefox-bin -P IG1 -no-remote'
+alias ffig1='/Applications/Firefox.app/Contents/MacOS/firefox-bin -P IG1 -no-remote'
+alias fflaurent='/Applications/Firefox.app/Contents/MacOS/firefox-bin -P Laurent -no-remote'
 alias todo="/Users/laurent/git/todo.txt-cli/todo.sh"
-alias puppet-lint="puppet-lint --no-80chars-check --no-documentation-check --no-autoloader_layout-check --no-nested_classes_or_defines-check --no-class_inherits_from_params_class-check"
+
+#alias puppet-lint="puppet-lint --no-80chars-check --no-documentation-check --no-autoloader_layout-check --no-nested_classes_or_defines-check --no-class_inherits_from_params_class-check"
 
 _src_etc_profile_d()
 {
@@ -300,6 +301,7 @@ function install_powerline_precmd() {
 #autoload -Uz vcs_info && vcs_info
 #zstyle ':vcs_info:*:prompt:*' check-for-changes true
 
+
 #promptinit
 #prompt redhat
 #PROMPT='%B%F{red}%m%k %B%F{blue}%1~ %# %b%f%k'
@@ -307,14 +309,16 @@ function install_powerline_precmd() {
 if [[ "$EUID" = "0" ]] || [[ "$USER" = 'root' ]]
   then
     PROMPT='%(?..[%F{red}%?%b%f%k])%F{red}%n%F{green}@%m%k %B%F{blue}%1~> %b%f%k'
-  else
-    if [[ -x ~/powerline-shell.py ]]
-      then
-        install_powerline_precmd
-      else
-        PROMPT='%(?..[%F{red}%?%b%f%k])%F{blue}%n%F{green}@%m%k %B%F{blue}%1~> %b%f%k'
-    fi
+else
+  if [[ -x ~/powerline-shell.py ]]
+    then
+      install_powerline_precmd
+    else
+      PROMPT='%(?..[%F{red}%?%b%f%k])%F{blue}%n%F{green}@%m%k %B%F{blue}%1~> %b%f%k'
   fi
+fi
+antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
+
 
 #----------------{ hash
 print -n " hash"
@@ -330,4 +334,6 @@ linux*)
 esac
 
 print -n " ]"
+
 print
+antigen-apply
