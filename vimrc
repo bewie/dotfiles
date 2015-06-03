@@ -5,18 +5,19 @@
 " Plugins
 " ---------------------------------------------------------------------------
 " https://github.com/junegunn/vim-plug
-" :PlugInstall to install plugins
+" :PlugInstall to install plugins | :PlugUpdate to update them
 call plug#begin('~/.vim/plugged')
 
 Plug 'https://github.com/scrooloose/syntastic.git'
 Plug 'https://github.com/sjl/gundo.vim.git'
 " vim-fugitive
 Plug 'https://github.com/tpope/vim-fugitive'
-
+" vim-airline
+Plug 'https://github.com/bling/vim-airline.git'
 " command-t
-" https://github.com/wincent/command-t.git
+Plug 'https://github.com/wincent/command-t.git'
 " ctrlp.vim
-" https://github.com/kien/ctrlp.vim.git
+Plug 'https://github.com/kien/ctrlp.vim.git'
 " supertab
 " https://github.com/ervandew/supertab.git
 
@@ -41,7 +42,7 @@ set tabpagemax=50 " open 50 tabs max
 set laststatus=2
 set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
 
-" syntastic config [test]
+" syntastic config
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -53,6 +54,14 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_puppet_puppetlint_args='--no-80chars-check --no-autoloader_layout-check --no-nested_classes_or_defines-check --no-class_inherits_from_params_class-check'
 
+" airline config
+let g:airline_theme='powerlineish'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_z=''
 
 " ---------------------------------------------------------------------------
 " Colors / Theme
