@@ -4,11 +4,21 @@
 "
 " Plugins
 " ---------------------------------------------------------------------------
-"
+" https://github.com/junegunn/vim-plug
+" :PlugInstall to install plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'https://github.com/scrooloose/syntastic.git'
 Plug 'https://github.com/sjl/gundo.vim.git'
+" vim-fugitive
+Plug 'https://github.com/tpope/vim-fugitive'
+
+" command-t
+" https://github.com/wincent/command-t.git
+" ctrlp.vim
+" https://github.com/kien/ctrlp.vim.git
+" supertab
+" https://github.com/ervandew/supertab.git
 
 call plug#end()
 
