@@ -2,6 +2,16 @@
 " Fichier .vimrc pour vim
 " (C) Laurent (laurent@bewie.org)
 "
+" Plugins
+" ---------------------------------------------------------------------------
+"
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com/scrooloose/syntastic.git'
+Plug 'https://github.com/sjl/gundo.vim.git'
+
+call plug#end()
+
 " General
 " ---------------------------------------------------------------------------
 
@@ -27,8 +37,8 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_puppet_puppetlint_args='--no-80chars-check --no-autoloader_layout-check --no-nested_classes_or_defines-check --no-class_inherits_from_params_class-check'
@@ -145,6 +155,14 @@ imap <C-e> <C-o>$
 map <C-e> $
 map <C-a> 0
 
+" Stop that stupid window from popping up
+map q: :q
+
+" gundo mapping
+map <C-u> <Esc>:GundoToggle<CR>
+" Tasklist
+map <C-T> <Plug>TaskList
+
 " reflow paragraph with Q in normal and visual mode
 nnoremap Q gqap
 vnoremap Q gq
@@ -165,10 +183,26 @@ inoremap <Up> <C-o>gk
 cnoremap <Left> <Space><BS><Left>
 cnoremap <Right> <Space><BS><Right>
 
-" gundo mapping
-map <C-u> <Esc>:GundoToggle<CR>
-" Tasklist
-map <C-T> <Plug>TaskList
+" ---------------------------------------------------------------------------
+" Misc mappings
+" ---------------------------------------------------------------------------
+
+" duplicate current tab with same file+line
+map ,t :tabnew %<CR>
+
+" open directory dirname of current file, and in new tab
+map ,d :e %:h/<CR>
+map ,dt :tabnew %:h/<CR>
+
+" open gf under cursor in new tab
+map ,f :tabnew <cfile><CR>
+
+" I use these commands in my TODO file
+map ,a o<ESC>:r!date +'\%A, \%B \%d, \%Y'<CR>:r!date +'\%A, \%B \%d, \%Y' \| sed 's/./-/g'<CR>A<CR><ESC>
+map ,o o[ ]
+map ,O O[ ]
+map ,x :s/^\[ \]/[x]/<CR>
+map ,X :s/^\[x\]/[ ]/<CR>
 
 " ----------------------------------------------------------------------------
 " Auto Commands
@@ -200,26 +234,6 @@ endif
 au Filetype sh,bash set ts=4 sts=4 sw=4 expandtab
 let g:is_bash = 1
 
-" ---------------------------------------------------------------------------
-" Misc mappings
-" ---------------------------------------------------------------------------
-
-" duplicate current tab with same file+line
-map ,t :tabnew %<CR>
-
-" open directory dirname of current file, and in new tab
-map ,d :e %:h/<CR>
-map ,dt :tabnew %:h/<CR>
-
-" open gf under cursor in new tab
-map ,f :tabnew <cfile><CR>
-
-" I use these commands in my TODO file
-map ,a o<ESC>:r!date +'\%A, \%B \%d, \%Y'<CR>:r!date +'\%A, \%B \%d, \%Y' \| sed 's/./-/g'<CR>A<CR><ESC>
-map ,o o[ ]
-map ,O O[ ]
-map ,x :s/^\[ \]/[x]/<CR>
-map ,X :s/^\[x\]/[ ]/<CR>
 
 " ---------------------------------------------------------------------------
 " Open URL on current line in browser
@@ -264,9 +278,11 @@ let $MANPAGER = '/usr/bin/less -is'
 command -nargs=* Xe !chmod +x <args>
 command! -nargs=0 Xe !chmod +x %
 
+" switch to vim-plug
+" https://github.com/junegunn/vim-plug
 " --------------------------------------------------------------------------
 " Pathogen load
 " --------------------------------------------------------------------------
-call pathogen#runtime_append_all_bundles()
-call pathogen#infect()
-call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles()
+" call pathogen#infect()
+" call pathogen#helptags()
