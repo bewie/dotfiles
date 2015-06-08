@@ -87,6 +87,7 @@ highlight LineNr ctermfg=Blue ctermbg=Black
 " ----------------------------------------------------------------------------
 
 "set list listchars=trail:.,tab:>.
+set listchars=eol:↲,tab:▶▹,nbsp:␣,extends:…,trail:•
 highlight SpecialKey ctermfg=DarkGray ctermbg=Black
 
 " ----------------------------------------------------------------------------
