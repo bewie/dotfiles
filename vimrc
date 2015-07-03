@@ -70,7 +70,10 @@ let g:airline_section_z=''
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  colorscheme mustang
+  "colorscheme mustang
+  colorscheme oxeded
+  " colorscheme zenburn
+  " colorscheme parsec
 endif
 
 " ---------------------------------------------------------------------------
