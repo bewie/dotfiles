@@ -172,12 +172,6 @@ map <F7> :cn<CR>
 map <S-F7> :cp<CR>
 map <A-F7> :copen<CR>
 
-" emacs movement keybindings in insert mode
-imap <C-a> <C-o>0
-imap <C-e> <C-o>$
-map <C-e> $
-map <C-a> 0
-
 " Stop that stupid window from popping up
 map q: :q
 
