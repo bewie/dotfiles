@@ -20,6 +20,9 @@ Plug 'https://github.com/wincent/command-t.git'
 Plug 'https://github.com/kien/ctrlp.vim.git'
 " supertab
 " https://github.com/ervandew/supertab.git
+" vim-gitgutter
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+
 
 call plug#end()
 
@@ -62,6 +65,11 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
+
+" gitgutter
+let g:gitgutter_enabled = 1
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 0
 
 " ---------------------------------------------------------------------------
 " Colors / Theme
