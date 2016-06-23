@@ -273,12 +273,6 @@ autoload -U zcalc
 if [[ "$TERM" == "xterm" ]]; then # We're not a login shell
   export TERM=xterm-256color
 fi
-#----------------{ Zen (cpan for zsh :) )
-fpath=(
-        $fpath
-        /root/.zen/zsh/scripts
-        /root/.zen/zsh/zle )
-autoload -U zen
 
 #----------------{ prompt
 print -n " prompt"
@@ -337,3 +331,88 @@ print -n " ]"
 
 print
 antigen-apply
+
+#----------------{ Golang
+# Setup Go workspaces
+_root_go_workspaces=$HOME/Go-Workspaces
+function _golang_normalize_env {
+    if [ "${${:-$GO_ENV}[-1]}" = "/" ]; then
+        export GO_ENV=${GO_ENV:0:${#GO_ENV}-1}
+    elif [ -z "$GO_ENV" ]; then
+        export GO_ENV="${_root_go_workspaces}";
+    fi
+
+    if [ ! -d "$GO_ENV" ]; then
+        mkdir "$GO_ENV"
+    fi
+}
+
+function go_workon {
+    if [ -z "$1" ]; then
+        printf "Specify a workspace to work with\n";
+        return 1
+    fi
+
+    _golang_normalize_env;
+    GOPATH=$(printf "$GO_ENV/$1\n")
+
+    if [ -z "$_GOENV_OLD_PATH" ]; then
+        # We have no old path - we can undonditionally set it
+        _GOENV_OLD_PATH="$PATH"
+    fi
+
+    PATH=$_GOENV_OLD_PATH:$GOPATH/bin
+
+    if [ -d "$GOPATH" ]; then
+        export GOPATH
+        export PATH
+            printf "GOPATH => %s\nPATH => %s\n" $GOPATH $PATH
+    else
+        printf 'No directory found for $GOPATH. Has it been created with 'mk_go_workspace'?\n'
+        return 1
+    fi
+    # update prompt:
+    if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT-}" ] ; then
+      _OLD_VIRTUAL_PS1="$PS1"
+      if [ "x" != x ] ; then
+        PS1="$PS1"
+      else
+        PS1="(`basename \"$GOPATH\"`)$PS1"
+      fi
+      export PS1
+    fi
+
+  cd $GOPATH
+}
+
+function mk_go_workspace {
+    if [ -z $1 ]; then
+        printf "Specify a workspace name\n";
+        return 1
+    fi
+
+    _golang_normalize_env;
+
+    if [ ! -d $GO_ENV/$1 ]; then
+        ws_name=$1;
+
+        pushd $GO_ENV > /dev/null;
+        mkdir -p $ws_name/{bin,pkg,src}
+        go_workon $1
+        popd > /dev/null;
+    else
+        printf "Workspace '$1' already exists!\n"
+        return 1
+    fi
+}
+
+# Todo remove prompt workspace name.
+function go_deactivate {
+    if [ -n "$_GOENV_OLD_PATH" ]; then
+        PATH="$_GOENV_OLD_PATH"
+        export PATH
+    fi
+
+    unset GOPATH
+}
+
