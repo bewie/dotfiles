@@ -366,20 +366,22 @@ function go_workon {
     if [ -d "$GOPATH" ]; then
         export GOPATH
         export PATH
-            printf "GOPATH => %s\nPATH => %s\n" $GOPATH $PATH
+        printf "GOPATH => %s\nPATH => %s\n" $GOPATH $PATH
+
+        # Update prompt:
+        if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT-}" ] ; then
+          _OLD_VIRTUAL_PS1="$PS1"
+          if [ "x" != x ] ; then
+            PS1="$PS1"
+          else
+            PS1="(`basename \"$GOPATH\"`)$PS1"
+          fi
+          export PS1
+        fi
     else
-        printf 'No directory found for $GOPATH. Has it been created with 'mk_go_workspace'?\n'
-        return 1
-    fi
-    # update prompt:
-    if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT-}" ] ; then
-      _OLD_VIRTUAL_PS1="$PS1"
-      if [ "x" != x ] ; then
-        PS1="$PS1"
-      else
-        PS1="(`basename \"$GOPATH\"`)$PS1"
-      fi
-      export PS1
+        #printf 'No directory found for $GOPATH. Has it been created with 'mk_go_workspace'?\n'
+        #return 1
+        mk_go_workspace $1
     fi
 
   cd $GOPATH
