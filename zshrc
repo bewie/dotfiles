@@ -35,7 +35,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git atom rake tmux cp)
+plugins=(git atom rake tmux cp git-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -311,7 +311,8 @@ else
       PROMPT='%(?..[%F{red}%?%b%f%k])%F{blue}%n%F{green}@%m%k %B%F{blue}%1~> %b%f%k'
   fi
 fi
-antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
+#pantigen theme arialdomartini/oh-my-git-themes oppa-lana-style
+#antigen theme robbyrussell/oh-my-zsh themes/bureau
 
 
 #----------------{ hash
@@ -418,3 +419,13 @@ function go_deactivate {
     unset GOPATH
 }
 
+alias gotest="go test -v -covermode=count"
+alias gocover="go test -covermode=count -coverprofile=profile.out"
+
+function gocoverhtml {
+    if [ -e "profile.out" ]; then
+        go tool cover -html=profile.out
+    else
+        gocover && go tool cover -html=profile.out && rm profile.out
+    fi
+}
