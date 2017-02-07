@@ -1,100 +1,82 @@
 [user]
-	name = laurent
-	email = laurent@bewie.org
-[color] 
-diff = auto 
-status = auto 
-branch = auto 
-interactive = auto 
-ui = auto
- 
-[core] 
-pager = less -R 
-editor = /usr/local/bin/vim
-#excludesfile = /home/laurent/.gitignore 
+  name = laurent
+  email = laurent@bewie.org
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
 
-[gc] 
-auto = 0 
+[core]
+  pager = less -R
+  editor = /usr/local/bin/vim
 
-[alias] 
-poule = "!f() { echo 'cot cot'; }; f"
-alias = config --get-regexp alias
-ci = commit 
-st = status
-s = status -sb
-br = branch 
-co = checkout 
-df = diff 
-cp = cherry-pick 
-gb = branch 
-gba= !git branch -a 
-who = shortlog -s -n -- 
-ls = ls-files
-ds = diff --stat 
-staged = diff --cached 
-unstage = reset HEAD 
-info = !git remote show origin 
-ignored = "!git ls-files --others --exclude-standard" 
-lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)[%an]%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative 
-add = add -v
+[gc]
+auto = 0
 
-bewie = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)[%an]%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --committer bewie 
+[alias]
+  poule = "!f() { echo 'cot cot'; }; f"
+  pur = pull --rebase
+  alias = config --get-regexp alias
+  ci = commit -m
+  st = status
+  s = status -sb
+  br = branch
+  co = checkout
+  df = diff
+  cp = cherry-pick
+  gb = branch
+  gba= !git branch -a
+  who = shortlog -s -n --
+  ls = ls-files
+  ds = diff --stat
+  staged = diff --cached
+  unstage = reset HEAD
+  info = !git remote show origin
+  ignored = "!git ls-files --others --exclude-standard"
+  add = add -v
+  poop = stash pop
+  undo = git reset --soft HEAD^ # Le flag --soft va conserver les modifications dans le répertoire de travail.
+  rz = reset --hard HEAD #
 
-commiter = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)[%an]%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --committer 
-log1 = log --pretty=oneline --abbrev-commit --decorate 
-rev = merge --no-ff --no-commit
-undo = git reset --soft HEAD^ # Le flag --soft va conserver les modifications dans le répertoire de travail. 
-last = log -1 HEAD 
-
-rz = reset --hard HEAD # 
-#grm = !git status | grep deleted | awk '{print \$3}' | xargs git rm # for LINUX only : auto rm all deleted 
-where = "!git branch | grep \"^\\*\" | cut -d \" \" -f 2" # affiche la branch courante 
-spull = !git svn rebase && git status sspull = !git stash && git svn rebase && git stash apply 
-spush = !git svn dcommit && git status 
-sspush = !git stash && git svn dcommit && git stash apply 
-missings = "!git log --left-right --graph --cherry-pick --oneline master...remotes/origin/HEAD" 
-svnmissings = "!git log --left-right --graph --cherry-pick --oneline master...remotes/trunk" 
-
-
-
-
-wip = !"git add -A; git ls-files --deleted -z | xargs -0 -I {} git rm {}; git commit -m \"wip\""
-unwip = !"git log -n 1 | grep -q -c wip && git reset HEAD~1"
-patch = !"git format-patch origin/master.. -o ~/Dropbox/patches/"
-rb = !"git wip;git rebase -i --autosquash origin/master;git unwip"
-pr = !"git fetch;git wip;git rebase --stat origin/master;git unwip;git heads"
-lost = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
-heads = !"git log origin/master.. --format='%Cred%h%Creset;%C(yellow)%an%Creset;%H;%Cblue%f%Creset' | git name-rev --stdin --always --name-only | column -t -s';'"
-
-
-#[difftool "sourcetree"] 
-#cmd = opendiff \"$LOCAL\" \"$REMOTE\" 
-#path =  
-
-#[mergetool "sourcetree"]
-#cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\" 
-#trustExitCode = true
+  lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)[%an]%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  bewie = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)[%an]%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --committer bewie
+  commiter = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)[%an]%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative --committer
+  log1 = log --pretty=oneline --abbrev-commit --decorate
+  rev = merge --no-ff --no-commit
+  last = log -1 HEAD
 
 [diff]
-    mnemonicPrefix = true
-    renames = true
-    wordRegex = . 
+  mnemonicPrefix = true
+  renames = true
+  wordRegex = .
 
 [fetch]
-    recurseSubmodules = on-demand
+  recurseSubmodules = on-demand
 
 [grep]
-    extendedRegexp = true 
+  extendedRegexp = true
 
 [status]
-    submoduleSummary = true
-    showUntrackedFiles = all 
+  submoduleSummary = true
+  showUntrackedFiles = all
 
 [rerere]
-    enabled = 1
+  enabled = 1
+
 [push]
-    default = upstream
+  default = upstream
+
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+
+[filter "lfs"]
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
+
+
+
