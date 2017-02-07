@@ -49,6 +49,7 @@ auto = 0
 
 [diff]
   mnemonicPrefix = true
+  submodule = log
   renames = true
   wordRegex = .
 
