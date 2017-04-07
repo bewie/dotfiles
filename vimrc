@@ -13,7 +13,7 @@ Plug 'https://github.com/sjl/gundo.vim.git'
 " vim-fugitive
 Plug 'https://github.com/tpope/vim-fugitive'
 " vim-airline
-Plug 'https://github.com/bling/vim-airline.git'
+Plug 'github.com/vim-airline/vim-airline-themes'
 " command-t
 Plug 'https://github.com/wincent/command-t.git'
 " ctrlp.vim
